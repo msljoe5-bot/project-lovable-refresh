@@ -1,39 +1,42 @@
 import { Star } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import avatar1 from "@/assets/avatar-1.jpg";
+import avatar2 from "@/assets/avatar-2.webp";
+import avatar3 from "@/assets/avatar-3.jpg";
 
 const testimonials = [
   {
     quote: "Relamping complet de notre entrepôt de 3000m². Financement CEE à 100%, aucun reste à charge. L'éclairage est bien meilleur et on économise 60% sur l'électricité.",
-    author: "Philippe Martin",
+    author: "Marc Lefebvre",
     location: "Marseille (13)",
     type: "LED Industriel",
     rating: 5,
-    initials: "PM"
+    avatar: avatar2
   },
   {
     quote: "Des panneaux solaires posés en 2 jours, équipe professionnelle et très à l'écoute. Je produis maintenant 70% de ma consommation électrique !",
-    author: "Marie Leclerc",
+    author: "Camille Bernard",
     location: "Bordeaux (33)",
     type: "Photovoltaïque 6kWc",
     rating: 5,
-    initials: "ML"
+    avatar: avatar1
   },
   {
     quote: "Installation d'une pompe à chaleur impeccable. L'équipe a géré toutes les démarches administratives pour MaPrimeRénov'. Ma facture de chauffage a été divisée par 3 !",
-    author: "Jean-Pierre Durand",
+    author: "Laurent Moreau",
     location: "Lyon (69)",
     type: "PAC Air-Eau",
     rating: 5,
-    initials: "JD"
+    avatar: null
   },
   {
     quote: "Isolation extérieure de ma maison des années 70. Plus de problèmes d'humidité et on a gagné 3°C l'hiver sans augmenter le chauffage. Merci Greenodia !",
-    author: "Sophie Dubois",
+    author: "Nathalie Rousseau",
     location: "Nantes (44)",
     type: "ITE",
     rating: 5,
-    initials: "SD"
+    avatar: avatar3
   },
 ];
 
@@ -70,9 +73,12 @@ const Testimonials = () => {
                 
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <Avatar className="h-10 w-10 bg-primary">
+                    <Avatar className="h-10 w-10">
+                      {testimonial.avatar ? (
+                        <AvatarImage src={testimonial.avatar} alt={testimonial.author} className="object-cover" />
+                      ) : null}
                       <AvatarFallback className="bg-primary text-primary-foreground text-sm">
-                        {testimonial.initials}
+                        {testimonial.author.split(' ').map(n => n[0]).join('')}
                       </AvatarFallback>
                     </Avatar>
                     <div>
