@@ -1,4 +1,4 @@
-import { Star } from "lucide-react";
+import { Star, Quote } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import avatar1 from "@/assets/avatar-1.jpg";
@@ -42,51 +42,51 @@ const testimonials = [
 
 const Testimonials = () => {
   return (
-    <section id="testimonials" className="py-20 bg-muted/30">
+    <section id="testimonials" className="py-24 lg:py-32 bg-background">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <p className="text-primary font-medium mb-2">Témoignages</p>
-          <h2 className="text-3xl lg:text-4xl font-bold text-foreground">
+        <div className="text-center mb-16">
+          <p className="text-secondary font-semibold mb-3 uppercase tracking-widest text-sm">Témoignages</p>
+          <h2 className="text-4xl lg:text-5xl font-bold text-foreground">
             Ils nous font{" "}
             <span className="text-primary">confiance</span>
           </h2>
-          <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
+          <p className="text-muted-foreground mt-6 max-w-2xl mx-auto text-lg">
             Particuliers et professionnels témoignent de leur expérience avec Greenodia.
           </p>
         </div>
         
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 gap-8">
           {testimonials.map((testimonial, index) => (
-            <Card key={index} className="bg-card hover:shadow-lg transition-all duration-300">
-              <CardContent className="p-6">
-                <div className="flex items-center gap-1 mb-4">
-                  <span className="text-2xl">💬</span>
+            <Card key={index} className="bg-card hover:shadow-2xl transition-all duration-500 border-border/50 hover:-translate-y-2 group">
+              <CardContent className="p-8">
+                <div className="flex items-center gap-2 mb-6">
+                  <Quote className="h-10 w-10 text-secondary/30 group-hover:text-secondary/50 transition-colors" />
                 </div>
                 
-                <p className="text-foreground mb-6 italic">"{testimonial.quote}"</p>
+                <p className="text-foreground mb-8 text-lg leading-relaxed">"{testimonial.quote}"</p>
                 
-                <div className="flex items-center gap-1 mb-4">
+                <div className="flex items-center gap-1 mb-6">
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                    <Star key={i} className="h-5 w-5 fill-secondary text-secondary" />
                   ))}
                 </div>
                 
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <Avatar className="h-10 w-10">
+                  <div className="flex items-center gap-4">
+                    <Avatar className="h-12 w-12 ring-2 ring-secondary/20">
                       {testimonial.avatar ? (
                         <AvatarImage src={testimonial.avatar} alt={testimonial.author} className="object-cover" />
                       ) : null}
-                      <AvatarFallback className="bg-primary text-primary-foreground text-sm">
+                      <AvatarFallback className="bg-primary text-primary-foreground font-semibold">
                         {testimonial.author.split(' ').map(n => n[0]).join('')}
                       </AvatarFallback>
                     </Avatar>
                     <div>
-                      <div className="font-medium text-foreground">{testimonial.author}</div>
+                      <div className="font-bold text-foreground">{testimonial.author}</div>
                       <div className="text-sm text-muted-foreground">📍 {testimonial.location}</div>
                     </div>
                   </div>
-                  <span className="text-xs bg-muted px-3 py-1 rounded-full text-muted-foreground">
+                  <span className="text-xs bg-secondary/20 text-secondary font-semibold px-4 py-2 rounded-full">
                     {testimonial.type}
                   </span>
                 </div>
@@ -95,10 +95,10 @@ const Testimonials = () => {
           ))}
         </div>
         
-        <div className="text-center mt-10">
-          <div className="inline-flex items-center gap-2 bg-primary/10 px-6 py-3 rounded-full">
-            <span className="text-xl">🤝😊👍🏻</span>
-            <span className="font-medium text-foreground">500+ clients satisfaits</span>
+        <div className="text-center mt-16">
+          <div className="inline-flex items-center gap-3 bg-primary/10 px-8 py-4 rounded-full">
+            <span className="text-2xl">🤝😊👍🏻</span>
+            <span className="font-bold text-foreground">500+ clients satisfaits</span>
             <span className="text-muted-foreground">dans toute la France</span>
           </div>
         </div>

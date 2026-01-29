@@ -34,15 +34,15 @@ const faqs = [
 
 const FAQ = () => {
   return (
-    <section id="faq" className="py-20 bg-background">
+    <section id="faq" className="py-24 lg:py-32 bg-muted/30">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <p className="text-primary font-medium mb-2">FAQ</p>
-          <h2 className="text-3xl lg:text-4xl font-bold text-foreground">
+        <div className="text-center mb-16">
+          <p className="text-secondary font-semibold mb-3 uppercase tracking-widest text-sm">FAQ</p>
+          <h2 className="text-4xl lg:text-5xl font-bold text-foreground">
             Questions{" "}
             <span className="text-primary">fréquentes</span>
           </h2>
-          <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
+          <p className="text-muted-foreground mt-6 max-w-2xl mx-auto text-lg">
             Tout ce que vous devez savoir sur la rénovation énergétique et les aides disponibles.
           </p>
         </div>
@@ -53,12 +53,12 @@ const FAQ = () => {
               <AccordionItem 
                 key={index} 
                 value={`item-${index}`}
-                className="bg-card border border-border rounded-xl px-6 data-[state=open]:shadow-md"
+                className="bg-card border border-border/50 rounded-2xl px-6 data-[state=open]:shadow-lg data-[state=open]:border-secondary/30 transition-all"
               >
-                <AccordionTrigger className="text-left text-foreground hover:no-underline py-5">
+                <AccordionTrigger className="text-left text-foreground hover:no-underline py-6 text-lg font-semibold hover:text-secondary transition-colors">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground pb-5">
+                <AccordionContent className="text-muted-foreground pb-6 text-base leading-relaxed">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
@@ -66,9 +66,9 @@ const FAQ = () => {
           </Accordion>
         </div>
         
-        <div className="text-center mt-10">
+        <div className="text-center mt-12">
           <p className="text-muted-foreground">Vous avez d'autres questions ?</p>
-          <a href="#contact" className="text-primary font-medium hover:underline">
+          <a href="#contact" className="text-secondary font-semibold hover:underline">
             Contactez-nous
           </a>
         </div>
