@@ -10,6 +10,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { CheckCircle, Shield, Clock, Phone, Mail, MapPin, Zap } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const activityTypes = [
   "Grande distribution / Supermarché",
@@ -26,7 +27,8 @@ const AuditPage = () => {
   const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
-    name: "",
+    firstName: "",
+    lastName: "",
     company: "",
     email: "",
     phone: "",
@@ -48,15 +50,29 @@ const AuditPage = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      const { error } = await supabase.from("leads_greenodia").insert({
+        first_name: formData.firstName,
+        last_name: formData.lastName,
+        email: formData.email,
+        phone: formData.phone || null,
+        company: formData.company,
+        building_type: formData.activityType || null,
+        surface: formData.surface || null,
+        message: formData.message || null,
+        source: "audit_form"
+      });
+
+      if (error) throw error;
+
       toast({
         title: "Demande envoyée avec succès !",
         description: "Un expert Greenodia vous recontactera sous 24h.",
       });
-      setIsSubmitting(false);
+      
       setFormData({
-        name: "",
+        firstName: "",
+        lastName: "",
         company: "",
         email: "",
         phone: "",
@@ -64,7 +80,16 @@ const AuditPage = () => {
         activityType: "",
         message: ""
       });
-    }, 1500);
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      toast({
+        title: "Erreur lors de l'envoi",
+        description: "Veuillez réessayer ou nous contacter directement.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -95,33 +120,48 @@ const AuditPage = () => {
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <Label htmlFor="name" className="text-foreground font-medium">
-                        Nom complet *
+                      <Label htmlFor="firstName" className="text-foreground font-medium">
+                        Prénom *
                       </Label>
                       <Input
-                        id="name"
-                        name="name"
-                        value={formData.name}
+                        id="firstName"
+                        name="firstName"
+                        value={formData.firstName}
                         onChange={handleChange}
-                        placeholder="Jean Dupont"
+                        placeholder="Jean"
                         required
                         className="h-12 bg-background border-border"
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="company" className="text-foreground font-medium">
-                        Entreprise *
+                      <Label htmlFor="lastName" className="text-foreground font-medium">
+                        Nom *
                       </Label>
                       <Input
-                        id="company"
-                        name="company"
-                        value={formData.company}
+                        id="lastName"
+                        name="lastName"
+                        value={formData.lastName}
                         onChange={handleChange}
-                        placeholder="Nom de votre entreprise"
+                        placeholder="Dupont"
                         required
                         className="h-12 bg-background border-border"
                       />
                     </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="company" className="text-foreground font-medium">
+                      Entreprise *
+                    </Label>
+                    <Input
+                      id="company"
+                      name="company"
+                      value={formData.company}
+                      onChange={handleChange}
+                      placeholder="Nom de votre entreprise"
+                      required
+                      className="h-12 bg-background border-border"
+                    />
                   </div>
 
                   <div className="grid md:grid-cols-2 gap-6">
