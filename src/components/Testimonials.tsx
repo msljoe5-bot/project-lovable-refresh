@@ -9,32 +9,36 @@ const testimonials = [
   {
     quote: "Relamping complet de notre entrepôt de 3000m². Financement CEE à 100%, aucun reste à charge. L'éclairage est bien meilleur et on économise 60% sur l'électricité.",
     author: "Marc Lefebvre",
+    role: "Directeur Logistique",
     location: "Marseille (13)",
     type: "LED Industriel",
     rating: 5,
     avatar: avatar2
   },
   {
-    quote: "Des panneaux solaires posés en 2 jours, équipe professionnelle et très à l'écoute. Je produis maintenant 70% de ma consommation électrique !",
+    quote: "Remplacement de 450 luminaires dans notre hypermarché en une semaine seulement. Aucune perturbation pour nos clients. L'équipe Greenodia est très professionnelle.",
     author: "Camille Bernard",
+    role: "Directrice de Magasin",
     location: "Bordeaux (33)",
-    type: "Photovoltaïque 6kWc",
+    type: "Grande Surface",
     rating: 5,
     avatar: avatar1
   },
   {
-    quote: "Installation d'une pompe à chaleur impeccable. L'équipe a géré toutes les démarches administratives pour MaPrimeRénov'. Ma facture de chauffage a été divisée par 3 !",
+    quote: "Notre usine de 8000m² est passée en LED haute performance. Réduction de 65% sur notre facture énergétique et un éclairage adapté à nos lignes de production.",
     author: "Laurent Moreau",
+    role: "Directeur Technique",
     location: "Lyon (69)",
-    type: "PAC Air-Eau",
+    type: "Site Industriel",
     rating: 5,
     avatar: null
   },
   {
-    quote: "Isolation extérieure de ma maison des années 70. Plus de problèmes d'humidité et on a gagné 3°C l'hiver sans augmenter le chauffage. Merci Greenodia !",
-    author: "Nathalie Rousseau",
+    quote: "Isolation thermique complète de notre bâtiment industriel de 4500m². Plus de déperditions énergétiques, nos équipes travaillent dans de meilleures conditions.",
+    author: "Philippe Durand",
+    role: "Chef d'Entreprise",
     location: "Nantes (44)",
-    type: "ITE",
+    type: "Isolation Industrielle",
     rating: 5,
     avatar: avatar3
   },
@@ -51,7 +55,7 @@ const Testimonials = () => {
             <span className="text-primary">confiance</span>
           </h2>
           <p className="text-muted-foreground mt-6 max-w-2xl mx-auto text-lg">
-            Particuliers et professionnels témoignent de leur expérience avec Greenodia.
+            Directeurs techniques et chefs d'entreprise témoignent de leur expérience avec Greenodia.
           </p>
         </div>
         
@@ -83,7 +87,8 @@ const Testimonials = () => {
                     </Avatar>
                     <div>
                       <div className="font-bold text-foreground">{testimonial.author}</div>
-                      <div className="text-sm text-muted-foreground">📍 {testimonial.location}</div>
+                      <div className="text-sm text-secondary font-medium">{testimonial.role}</div>
+                      <div className="text-xs text-muted-foreground">📍 {testimonial.location}</div>
                     </div>
                   </div>
                   <span className="text-xs bg-secondary/20 text-secondary font-semibold px-4 py-2 rounded-full">
@@ -97,8 +102,8 @@ const Testimonials = () => {
         
         <div className="text-center mt-16">
           <div className="inline-flex items-center gap-3 bg-primary/10 px-8 py-4 rounded-full">
-            <span className="text-2xl">🤝😊👍🏻</span>
-            <span className="font-bold text-foreground">500+ clients satisfaits</span>
+            <span className="text-2xl">🏭🏢🏪</span>
+            <span className="font-bold text-foreground">500+ entreprises accompagnées</span>
             <span className="text-muted-foreground">dans toute la France</span>
           </div>
         </div>

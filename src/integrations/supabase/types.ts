@@ -14,7 +14,51 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      leads_greenodia: {
+        Row: {
+          building_type: string | null
+          company: string
+          created_at: string
+          email: string
+          first_name: string
+          id: string
+          last_name: string
+          message: string | null
+          phone: string | null
+          source: string | null
+          surface: string | null
+          updated_at: string
+        }
+        Insert: {
+          building_type?: string | null
+          company: string
+          created_at?: string
+          email: string
+          first_name: string
+          id?: string
+          last_name: string
+          message?: string | null
+          phone?: string | null
+          source?: string | null
+          surface?: string | null
+          updated_at?: string
+        }
+        Update: {
+          building_type?: string | null
+          company?: string
+          created_at?: string
+          email?: string
+          first_name?: string
+          id?: string
+          last_name?: string
+          message?: string | null
+          phone?: string | null
+          source?: string | null
+          surface?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
